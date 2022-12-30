@@ -25,7 +25,7 @@ function Content({}: Props) {
   return (
     <div className="mt-40 ml-80 space-y-8 flex flex-col justify-center">
       <h1 className=" text-3xl uppercase truncate">{title}</h1>
-      <h3 className="italic">{category}</h3>
+      <h3 className="italic text-slate-400">{category}</h3>
       <img
         className="w-[500px] h-[300px] rounded-t-2xl hover:scale-110 cursor-pointer"
         src={image}

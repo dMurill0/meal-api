@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { GoSearch } from "react-icons/go";
+
 type Props = {};
 
 function Navbar({}: Props) {
@@ -10,7 +11,10 @@ function Navbar({}: Props) {
         <Link className="mx-2 hover:scale-125 hover:bg-orange-600" href={""}>
           Menu
         </Link>
-        <Link className="mx-2 hover:scale-125 hover:bg-orange-600" href={""}>
+        <Link
+          className="mx-2 hover:scale-125 hover:bg-orange-600"
+          href={"/foods"}
+        >
           Foods
         </Link>
         <Link className="mx-2 hover:scale-125 hover:bg-orange-600" href={""}>

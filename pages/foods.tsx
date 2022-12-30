@@ -11,9 +11,10 @@ type Props = {};
 
 function Foods({}: Props) {
   const [recipe, setRecipe] = useState([]);
-
+  const [type, setType] = useState("");
+  const [zone, setZone] = useState("");
   useEffect(() => {
-    fetch("https://www.themealdb.com/api/json/v1/1/filter.php?c=Dessert")
+    fetch("https://www.themealdb.com/api/json/v1/1/filter.php?c=Pork")
       .then((res) => res.json())
       .then((data) => {
         setRecipe(data.meals);
@@ -21,9 +22,31 @@ function Foods({}: Props) {
       });
   }, []);
 
+  function handleRandom() {
+    useEffect(() => {
+      fetch("https://www.themealdb.com/api/json/v1/1/random.php")
+        .then((res) => res.json())
+        .then((data) => {
+          setRecipe(data.meals[0]);
+          let name = data.meals[0].strMeal;
+          setTitle(name);
+          let thumb = data.meals[0].strMealThumb;
+          setImage(thumb);
+          let cate = data.meals[0].strCategory;
+          setCategory(cate);
+          console.log(data.meals[0]);
+        });
+    }, []);
+  }
+
   return (
     <div className="h-screen w-screen bg-orange-400 flex-col justify-center pt-12 space-y-6 font-unbounded pl-8">
-      <h1 className="text-6xl pl-20 ">Popular foods</h1>
+      <img
+        src="/images/image4.png"
+        alt=""
+        className="absolute w-[400px] right-0"
+      />
+      <h1 className="text-6xl pl-20 uppercase">Popular foods</h1>
       <FilterByZone />
       <FilterByType />
       <div className="flex space-x-8 items-center">
@@ -31,11 +54,12 @@ function Foods({}: Props) {
         <GiPerspectiveDiceSixFacesRandom
           size={80}
           className="w-[40px] cursor-pointer"
+          onClick={handleRandom}
         />
       </div>
-      <div className="w-7/8 flex mx-6 justify-center truncate space-x-4">
+      <div className="w-7/8 flex mx-6 justify-center truncate space-x-4 ">
         <Swiper
-          spaceBetween={20}
+          spaceBetween={40}
           slidesPerView={3}
           onSlideChange={() => console.log("slide change")}
           onSwiper={(swiper) => console.log(swiper)}
@@ -44,20 +68,16 @@ function Foods({}: Props) {
             recipe.map((rec) => (
               <SwiperSlide
                 key={rec.idMeal}
-                className="flex flex-col bg-orange-500 p-8 my-4 "
+                className="flex flex-col bg-orange-500 p-8 my-4 space-y-2"
               >
                 <img
-                  className="w-[300px] h-[300px] mx-auto rounded-2xl cursor-pointer"
+                  className="w-full h-[300px] mx-auto rounded-2xl cursor-pointer"
                   src={rec.strMealThumb}
                   alt=""
                 />
-                <h1 className="mx-auto text-xl font-bold uppercase truncate...">
+                <h1 className="mx-auto texxt-xl font-bold uppercase truncate...">
                   {rec.strMeal}
                 </h1>
-                <div className="flex justify-between">
-                  <h5>{rec.strCategory}</h5>
-                  <h5>{rec.strArea}</h5>
-                </div>
               </SwiperSlide>
             ))}
         </Swiper>

@@ -28,13 +28,6 @@ function Foods({}: Props) {
         .then((res) => res.json())
         .then((data) => {
           setRecipe(data.meals[0]);
-          let name = data.meals[0].strMeal;
-          setTitle(name);
-          let thumb = data.meals[0].strMealThumb;
-          setImage(thumb);
-          let cate = data.meals[0].strCategory;
-          setCategory(cate);
-          console.log(data.meals[0]);
         });
     }, []);
   }
@@ -44,7 +37,7 @@ function Foods({}: Props) {
       <img
         src="/images/image4.png"
         alt=""
-        className="absolute w-[400px] right-0"
+        className="absolute w-[150px] right-20 top-4"
       />
       <h1 className="text-6xl pl-20 uppercase">Popular foods</h1>
       <FilterByZone />

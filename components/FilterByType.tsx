@@ -1,5 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Thumbs } from "swiper";
+import "swiper/css";
 type Props = {};
 
 function FilterByType({}: Props) {
@@ -15,15 +18,21 @@ function FilterByType({}: Props) {
   return (
     <div className="flex space-x-8 cursor-pointer truncate...">
       <h3>By type</h3>
-      {type &&
-        type.map((ty) => (
-          <h3
-            key={ty.strCategory}
-            className="p-4 text-xs bg-orange-300 rounded-full [&.active]bg-orange-400 active:bg-orange-500"
-          >
-            {ty.strCategory}
-          </h3>
-        ))}
+      <Swiper
+        spaceBetween={4}
+        slidesPerView={10}
+        onSlideChange={() => console.log("slide change")}
+        onSwiper={(swiper) => console.log(swiper)}
+      >
+        {type &&
+          type.map((ty) => (
+            <SwiperSlide key={ty.strCategory} className="flex">
+              <h3 className="p-4 text-xs bg-orange-300 rounded-full [&.active]bg-orange-400 active:bg-orange-500 truncate">
+                {ty.strCategory}
+              </h3>
+            </SwiperSlide>
+          ))}
+      </Swiper>
     </div>
   );
 }

@@ -20,7 +20,10 @@ function Navbar({}: Props) {
         <Link className="mx-2 hover:scale-125 hover:bg-orange-600" href={""}>
           Services
         </Link>
-        <Link className="mx-2 hover:scale-125 hover:bg-orange-600" href={""}>
+        <Link
+          className="mx-2 hover:scale-125 hover:bg-orange-600"
+          href={"/about"}
+        >
           About Us
         </Link>
         <GoSearch />

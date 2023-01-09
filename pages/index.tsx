@@ -32,23 +32,23 @@ export default function Home() {
         </div>
         <div className="w-2/3 flex flex-col">
           <div className=" bg-orange-400 h-5/6 text-white">
-            <Image
+            {/* <Image
               src="/images/image3.png"
               width={120}
               height={180}
               className="absolute left-[700px] top-0"
               alt="image1"
-            />
+            /> */}
             <Navbar />
             <Content />
           </div>
-          <div className=" bg-orange-100 h-1/6 flex">
-            <div className="w-1/2 flex justify-center items-center space-x-8">
+          <div className=" bg-orange-100 h-1/6 flex ">
+            <div className="w-1/2 flex justify-center items-center space-x-8 mr-10 border-r-2 border-orange-700">
               <h1 className="uppercase  text-6xl">22k+</h1>
               <h2>Happy consumer</h2>
             </div>
-
-            <div className="w-1/2 flex items-center space-x-8">
+            
+            <div className="w-1/2 flex items-center space-x-8 m-8">
               <img
                 src="/images/profile.jpg"
                 className="rounded-full h-[100px] "

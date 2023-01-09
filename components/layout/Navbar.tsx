@@ -7,7 +7,7 @@ type Props = {};
 
 function Navbar({}: Props) {
   const [search, setSearch] = useState("");
-  async function handleSearch() { 
+  function handleSearch() { 
     let input = document.getElementById("input-srch");
     setSearch(input.value);
     alert(search);
@@ -37,7 +37,7 @@ function Navbar({}: Props) {
       </ul>
       <div className="flex justify-center items-center mt-8  space-x-6">
         <input
-          className="bg-orange-300 text-slate-500 w-1/3 rounded-lg shadow-sm focus:ring-1 focus:ring-orange-500  border-b-4 focus:border-orange-500 focus:outline-dotted hover:border-orange-300 border-orange-100"
+          className="bg-orange-300 text-slate-500 w-1/3 rounded-lg shadow-sm focus:ring-1 focus:ring-orange-500  border-b-4 focus:border-orange-500 focus:outline-dotted hover:border-orange-300 border-orange-100 "
           type="search"
           placeholder="Search a meal"
           id="input-srch"

@@ -16,6 +16,8 @@ function Foods({}: Props) {
   const [type, setType] = useState("");
   const [zone, setZone] = useState("");
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [content, setContent] = useState("");
+  const [tipo, setTipo] = useState("");
   useEffect(() => {
     fetch("https://www.themealdb.com/api/json/v1/1/filter.php?c=Pork")
       .then((res) => res.json())
@@ -25,6 +27,20 @@ function Foods({}: Props) {
       });
   }, []);
 
+
+  function handleContent(e) {
+    const { target } = e;
+    let btn = document.getElementById("btn-zone");
+    setContent(target.innerText);
+    alert(target.innerText);
+  }
+
+  function handleType(e) {
+    const { target } = e;
+    let btn = document.getElementById("btn-type");
+    setTipo(target.innerText);
+    alert(target.innerText);
+  }
   // function handleRandom() {
   //   useEffect(() => {
   //     fetch("https://www.themealdb.com/api/json/v1/1/random.php")
@@ -45,8 +61,8 @@ function Foods({}: Props) {
         />
       </Link>
       <h1 className="text-6xl pl-20 uppercase">Popular foods</h1>
-      <FilterByZone/>
-      <FilterByType />
+      <FilterByZone handleContent={handleContent}/>
+      <FilterByType handleType={handleType}/>
       <div className="flex space-x-8 items-center">
         <h3>Random Meal </h3>
         <GiPerspectiveDiceSixFacesRandom
@@ -55,6 +71,7 @@ function Foods({}: Props) {
           // onClick={handleRandom}
         />
       </div>
+      <h1>{content} {tipo}</h1>
       <div className="w-7/8 flex mx-6 justify-center truncate space-x-4 ">
         <Swiper
           modules={[Thumbs]}

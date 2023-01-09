@@ -5,8 +5,9 @@ import { Thumbs } from "swiper";
 import "swiper/css";
 type Props = {};
 
-function FilterByType({}: Props) {
+function FilterByType({handleType}: Props) {
   const [type, setType] = useState([]);
+  
   useEffect(() => {
     fetch("https://www.themealdb.com/api/json/v1/1/list.php?c=list")
       .then((res) => res.json())
@@ -15,6 +16,8 @@ function FilterByType({}: Props) {
         console.log(data.meals);
       });
   }, []);
+
+
   return (
     <div className="flex space-x-8 cursor-pointer truncate...">
       <h3>By type</h3>
@@ -27,9 +30,9 @@ function FilterByType({}: Props) {
         {type &&
           type.map((ty) => (
             <SwiperSlide key={ty.strCategory} className="flex">
-              <h3 className="p-4 text-xs bg-orange-300 rounded-full [&.active]bg-orange-400 active:bg-orange-500 truncate">
+              <button id="btn-type" onClick={handleType} className="p-4 text-xs bg-orange-300 rounded-full [&.active]bg-orange-400 active:bg-orange-500 truncate">
                 {ty.strCategory}
-              </h3>
+              </button>
             </SwiperSlide>
           ))}
       </Swiper>

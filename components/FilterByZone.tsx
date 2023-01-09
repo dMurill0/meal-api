@@ -17,16 +17,25 @@ function FilterByZone({}: Props) {
       });
   }, []);
 
-  // function handleContent() {
-  //   const contenido = document.getElementById("contenido");
-  //   alert(contenido.value);
-  // }
+  function handleContent(
+    event: Event & {
+      target: HTMLButtonElement;
+    }
+  ) {
+    const { target } = event;
+    let btn = document.getElementById("btn-zone");
+    alert(btn?.nodeValue);
+    setContent(target.value);
+    // alert(content);
+  }
+
   return (
     <div className="flex space-x-2 cursor-pointer truncate">
+      <h1>{content}</h1>
       <h3>By zone</h3>
       <Swiper
         spaceBetween={0}
-        slidesPerView={15}
+        slidesPerView={14}
         onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper) => console.log(swiper)}
       >
@@ -34,13 +43,8 @@ function FilterByZone({}: Props) {
           zone.map((zo) => (
             <SwiperSlide key={zo.strArea} className="flex">
               <button
-                onClick={(e) => {
-                  const { target } = e;
-                  if (target) {
-                    setContent((target as HTMLButtonElement).value);
-                    alert(content);
-                  }
-                }}
+                id="btn-zone"
+                onClick={handleContent}
                 className="p-4 text-xs bg-orange-300 rounded-full [&.active]bg-orange-400 active:bg-orange-500 truncate mx-auto"
               >
                 {zo.strArea}

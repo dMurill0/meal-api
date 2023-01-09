@@ -19,8 +19,8 @@ function FilterByType({}: Props) {
     <div className="flex space-x-8 cursor-pointer truncate...">
       <h3>By type</h3>
       <Swiper
-        spaceBetween={4}
-        slidesPerView={10}
+        spaceBetween={5}
+        slidesPerView={14}
         onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper) => console.log(swiper)}
       >

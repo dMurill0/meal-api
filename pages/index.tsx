@@ -12,10 +12,10 @@ export default function Home() {
   return (
     <>
       <div className="w-screen h-screen  flex font-unbounded font-bold">
-        <div className="w-1/3 bg-orange-200 h-screen relative">
+        <div className="w-1/3 bg-[#fed7aa] h-screen relative">
           <img
-            src="/images/logo.png"
-            className="absolute -top-20 h-[300px]"
+            src="/images/image4.png"
+            className="absolute top-5 left-5 h-[200px]"
             alt=""
           />
 
@@ -26,7 +26,7 @@ export default function Home() {
             className="rotate-12 absolute -right-20 top-40"
             alt="image1"
           />
-          <h2 className="text-4xl mx-8 italic absolute bottom-40">
+          <h2 className="text-4xl mx-8 italic absolute bottom-40 uppercase">
             Your favourite site to search or discover new meals
           </h2>
         </div>

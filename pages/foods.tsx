@@ -9,6 +9,7 @@ import "swiper/css";
 import { Thumbs } from "swiper";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { GoSearch } from "react-icons/go";
 
 type Props = {};
 
@@ -68,7 +69,7 @@ function Foods({}: Props) {
   }
 
   return (
-    <div className="h-screen w-screen bg-orange-400 flex-col justify-center pt-12 space-y-6 font-unbounded pl-8">
+    <div className="h-full w-screen bg-orange-400 flex-col justify-center pt-12 space-y-6 font-unbounded pl-8">
       <Link href={"/"}>
         <img
           src="/images/image4.png"
@@ -77,6 +78,17 @@ function Foods({}: Props) {
         />
       </Link>
       <h1 className="text-6xl pl-20 uppercase">Popular foods</h1>
+      <div className="flex justify-center items-center mt-8  space-x-6">
+        <input
+          className="bg-orange-300 text-slate-500 w-1/3 rounded-lg shadow-sm focus:ring-1 focus:ring-orange-500  border-b-4 focus:border-orange-500 focus:outline-dotted hover:border-orange-300 border-orange-100 "
+          type="search"
+          placeholder="Search a meal"
+          id="input-srch"
+        />
+        <button id="search-btn" >
+          <GoSearch size={30} />
+        </button>
+      </div>
       <FilterByZone handleContent={handleContent} />
       <FilterByType handleType={handleType} />
       <div className="flex space-x-8 items-center">

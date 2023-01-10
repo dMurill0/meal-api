@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+import React, { useRef } from "react";
 import FilterByType from "../components/FilterByType";
 import FilterByZone from "../components/FilterByZone";
 import { GiPerspectiveDiceSixFacesRandom } from "react-icons/gi";
@@ -8,16 +8,25 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Thumbs } from "swiper";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 type Props = {};
 
 function Foods({}: Props) {
   const [recipe, setRecipe] = useState([]);
+  const [receta, setReceta] = useState([]);
   const [type, setType] = useState("");
   const [zone, setZone] = useState("");
+  const [title, setTitle] = useState("");
+  const [image, setImage] = useState("");
+  const [category, setCategory] = useState([]);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [content, setContent] = useState("");
   const [tipo, setTipo] = useState("");
+
+  const router = useRouter();
+  const currentZone = useRef();
+
   useEffect(() => {
     fetch("https://www.themealdb.com/api/json/v1/1/filter.php?c=Pork")
       .then((res) => res.json())
@@ -27,11 +36,11 @@ function Foods({}: Props) {
       });
   }, []);
 
-
   function handleContent(e) {
     const { target } = e;
     let btn = document.getElementById("btn-zone");
     setContent(target.innerText);
+    currentZone.current = target;
     alert(target.innerText);
   }
 
@@ -41,15 +50,22 @@ function Foods({}: Props) {
     setTipo(target.innerText);
     alert(target.innerText);
   }
-  // function handleRandom() {
-  //   useEffect(() => {
-  //     fetch("https://www.themealdb.com/api/json/v1/1/random.php")
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         setRecipe(data.meals[0]);
-  //       });
-  //   }, []);
-  // }
+  function handleRandom() {
+    fetch("https://www.themealdb.com/api/json/v1/1/random.php")
+      .then((res) => res.json())
+      .then((data) => {
+        setReceta(data.meals[0]);
+        console.log("caca", data.meals[0]);
+
+        let name = data.meals[0].strMeal;
+        setTitle(name);
+        let thumb = data.meals[0].strMealThumb;
+        setImage(thumb);
+        let cate = data.meals[0].strCategory;
+        setCategory(cate);
+        router.push(`Search/${data.meals[0].idMeal}`);
+      });
+  }
 
   return (
     <div className="h-screen w-screen bg-orange-400 flex-col justify-center pt-12 space-y-6 font-unbounded pl-8">
@@ -61,17 +77,21 @@ function Foods({}: Props) {
         />
       </Link>
       <h1 className="text-6xl pl-20 uppercase">Popular foods</h1>
-      <FilterByZone handleContent={handleContent}/>
-      <FilterByType handleType={handleType}/>
+      <FilterByZone handleContent={handleContent} />
+      <FilterByType handleType={handleType} />
       <div className="flex space-x-8 items-center">
         <h3>Random Meal </h3>
+        <h2>{title}</h2>
+
         <GiPerspectiveDiceSixFacesRandom
           size={80}
           className="w-[40px] cursor-pointer"
-          // onClick={handleRandom}
+          onClick={handleRandom}
         />
       </div>
-      <h1>{content} {tipo}</h1>
+      <h1>
+        {content} {tipo}
+      </h1>
       <div className="w-7/8 flex mx-6 justify-center truncate space-x-4 ">
         <Swiper
           modules={[Thumbs]}

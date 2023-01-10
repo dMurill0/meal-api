@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Thumbs } from "swiper";
 import "swiper/css";
 import Link from "next/link";
-type Props = { handleContent };
+type Props = { };
 
 function FilterByZone({}: Props) {
   const [zone, setZone] = useState([]);
@@ -32,7 +32,7 @@ function FilterByZone({}: Props) {
             <SwiperSlide key={zo.strArea} className="flex">
               <h3
                 id="btn-zone"
-                onClick={handleContent}
+                // onClick={handleContent}
                 className="[&.active]:text-orange-400 active:text-orange-400 p-4 text-xs bg-orange-300 rounded-full [&.active]bg-orange-400 active:bg-orange-500 truncate mx-auto"
               >
                 {zo.strArea}

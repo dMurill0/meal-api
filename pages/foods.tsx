@@ -85,12 +85,12 @@ function Foods({}: Props) {
           placeholder="Search a meal"
           id="input-srch"
         />
-        <button id="search-btn" >
+        <button id="search-btn">
           <GoSearch size={30} />
         </button>
       </div>
-      <FilterByZone handleContent={handleContent} />
-      <FilterByType handleType={handleType} />
+      <FilterByZone />
+      <FilterByType />
       <div className="flex space-x-8 items-center">
         <h3>Random Meal </h3>
         <h2>{title}</h2>

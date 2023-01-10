@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Thumbs } from "swiper";
 import "swiper/css";
-type Props = {handleType};
+type Props = {};
 
 function FilterByType({}: Props) {
   const [type, setType] = useState([]);
@@ -30,7 +30,7 @@ function FilterByType({}: Props) {
         {type &&
           type.map((ty) => (
             <SwiperSlide key={ty.strCategory} className="flex">
-              <button id="btn-type" onClick={handleType} className="p-4 text-xs bg-orange-300 rounded-full [&.active]bg-orange-400 active:bg-orange-500 truncate">
+              <button id="btn-type"  className="p-4 text-xs bg-orange-300 rounded-full [&.active]bg-orange-400 active:bg-orange-500 truncate">
                 {ty.strCategory}
               </button>
             </SwiperSlide>

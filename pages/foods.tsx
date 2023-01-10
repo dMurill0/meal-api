@@ -63,7 +63,7 @@ function Foods({}: Props) {
         setImage(thumb);
         let cate = data.meals[0].strCategory;
         setCategory(cate);
-        router.push(`Search/${data.meals[0].idMeal}`);
+        router.push(`search/${data.meals[0].idMeal}`);
       });
   }
 
@@ -108,14 +108,16 @@ function Foods({}: Props) {
                 key={rec.idMeal}
                 className="flex flex-col bg-orange-500 p-8 my-4 space-y-2"
               >
-                <img
-                  className="w-full h-[300px] mx-auto rounded-2xl cursor-pointer"
-                  src={rec.strMealThumb}
-                  alt=""
-                />
-                <h1 className="mx-auto texxt-xl font-bold uppercase truncate...">
-                  {rec.strMeal}
-                </h1>
+                <Link href={`search/${rec.idMeal}`}>
+                  <img
+                    className="w-full h-[300px] mx-auto rounded-2xl cursor-pointer"
+                    src={rec.strMealThumb}
+                    alt=""
+                  />
+                  <h1 className="mx-auto texxt-xl font-bold uppercase truncate...">
+                    {rec.strMeal}
+                  </h1>
+                </Link>
               </SwiperSlide>
             ))}
         </Swiper>

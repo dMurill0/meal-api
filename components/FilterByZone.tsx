@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Thumbs } from "swiper";
 import "swiper/css";
-import { table } from "console";
+import Link from "next/link";
 type Props = {};
 
 function FilterByZone({handleContent}: Props) {
   const [zone, setZone] = useState([]);
   
+
   useEffect(() => {
     fetch("https://www.themealdb.com/api/json/v1/1/list.php?a=list")
       .then((res) => res.json())
@@ -31,13 +32,14 @@ function FilterByZone({handleContent}: Props) {
         {zone &&
           zone.map((zo) => (
             <SwiperSlide key={zo.strArea} className="flex">
-              <button
+              <h3
+              
                 id="btn-zone"
                 onClick={handleContent}
-                className="p-4 text-xs bg-orange-300 rounded-full [&.active]bg-orange-400 active:bg-orange-500 truncate mx-auto"
+                className="[&.active]:text-orange-400 active:text-orange-400 p-4 text-xs bg-orange-300 rounded-full [&.active]bg-orange-400 active:bg-orange-500 truncate mx-auto"
               >
                 {zo.strArea}
-              </button>
+              </h3>
             </SwiperSlide>
           ))}
       </Swiper>

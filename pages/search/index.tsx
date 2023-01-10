@@ -2,10 +2,11 @@ import React from 'react'
 
 type Props = {}
 
-function index({}: Props) {
+function Index({}: Props) {
+  
   return (
     <div>index</div>
   )
 }
 
-export default index
+export default Index

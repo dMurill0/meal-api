@@ -18,7 +18,7 @@ function Navbar({}: Props) {
         if (data.length > 0) {
           console.log(data.meals[0]);
           let id = data.meals[0].idMeal;
-          router.push(`Search/${id}`);
+          router.push(`search/${id}`);
         } else {
           alert("no hay recetas");
         }

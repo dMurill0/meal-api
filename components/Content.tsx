@@ -28,7 +28,7 @@ function Content({}: Props) {
       });
   }, []);
   function handleOpen() {
-    router.push(`Search/${id}`);
+    router.push(`search/${id}`);
   }
   return (
     <div className="mt-20 ml-80 space-y-4 flex flex-col justify-center">

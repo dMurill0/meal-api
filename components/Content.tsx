@@ -23,11 +23,11 @@ function Content({}: Props) {
       });
   }, []);
   return (
-    <div className="mt-20 ml-80 space-y-8 flex flex-col justify-center">
+    <div className="mt-20 ml-80 space-y-4 flex flex-col justify-center">
       <h1 className=" text-5xl first-letter:uppercase truncate">{title}</h1>
       <h3 className="italic text-slate-400">{category}</h3>
       <img
-        className="w-[500px] h-[300px] rounded-t-2xl hover:scale-110 cursor-pointer"
+        className="w-[500px] h-[300px] rounded-t-2xl hover:scale-110 cursor-pointer shadow-2xl shadow-orange-800"
         src={image}
         alt=""
       />

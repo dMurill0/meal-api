@@ -15,21 +15,21 @@ function Navbar({}: Props) {
 
   return (
     <nav>
-      <ul className="list-none flex space-x-4 md:space-x-12 lg:space-x-28 justify-center text-xl mr-28 mt-8 items-center uppercase">
-        <Link className="mx-2 hover:scale-125 hover:bg-orange-600" href={""}>
+      <ul className="list-none flex mx-6 py-2 shadow-b-lg space-x-4 md:space-x-12 lg:space-x-28 justify-center text-xl mr-28 mt-8 items-center uppercase">
+        <Link className="mx-2 hover:bg-orange-600 -mb-px mr-1 inline-block border-l border-t border-r  rounded-t py-2 px-4 " href={""}>
           Menu
         </Link>
         <Link
-          className="mx-2 hover:scale-125 hover:bg-orange-600"
+          className="mx-2 hover:bg-orange-600 -mb-px mr-1 inline-block border-l border-t border-r  rounded-t py-2 px-4 "
           href={"/foods"}
         >
           Foods
         </Link>
-        <Link className="mx-2 hover:scale-125 hover:bg-orange-600" href={""}>
+        <Link className="mx-2 hover:bg-orange-600 -mb-px mr-1 inline-block border-l border-t border-r  rounded-t py-2 px-4 " href={""}>
           Services
         </Link>
         <Link
-          className="mx-2 hover:scale-125 hover:bg-orange-600"
+          className="mx-2 hover:bg-orange-600 -mb-px mr-1 inline-block border-l border-t border-r  rounded-t py-2 px-4 "
           href={"/about"}
         >
           About Us

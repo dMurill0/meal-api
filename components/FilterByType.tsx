@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Thumbs } from "swiper";
 import "swiper/css";
-type Props = {};
+type Props = {handleType};
 
-function FilterByType({handleType}: Props) {
+function FilterByType({}: Props) {
   const [type, setType] = useState([]);
   
   useEffect(() => {

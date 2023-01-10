@@ -31,8 +31,8 @@ function Content({}: Props) {
     router.push(`search/${id}`);
   }
   return (
-    <div className="mt-20 ml-80 space-y-4 flex flex-col justify-center">
-      <button onClick={handleOpen}>
+    <div className="mt-20 ml-80 ">
+      <button onClick={handleOpen} className="space-y-4 flex flex-col justify-center">
         <h1 className=" text-5xl first-letter:uppercase truncate">{title}</h1>
         <h3 className="italic text-slate-400">{category}</h3>
         <img

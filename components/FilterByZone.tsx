@@ -4,11 +4,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Thumbs } from "swiper";
 import "swiper/css";
 import Link from "next/link";
-type Props = {};
+type Props = { handleContent };
 
-function FilterByZone({handleContent}: Props) {
+function FilterByZone({}: Props) {
   const [zone, setZone] = useState([]);
-  
 
   useEffect(() => {
     fetch("https://www.themealdb.com/api/json/v1/1/list.php?a=list")
@@ -18,7 +17,6 @@ function FilterByZone({handleContent}: Props) {
         console.log(data.meals);
       });
   }, []);
-
 
   return (
     <div className="flex space-x-2 cursor-pointer truncate">
@@ -33,7 +31,6 @@ function FilterByZone({handleContent}: Props) {
           zone.map((zo) => (
             <SwiperSlide key={zo.strArea} className="flex">
               <h3
-              
                 id="btn-zone"
                 onClick={handleContent}
                 className="[&.active]:text-orange-400 active:text-orange-400 p-4 text-xs bg-orange-300 rounded-full [&.active]bg-orange-400 active:bg-orange-500 truncate mx-auto"

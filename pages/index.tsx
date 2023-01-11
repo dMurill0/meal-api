@@ -11,25 +11,22 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <>
-      <div className="w-screen h-screen  flex font-unbounded font-bold">
-        <div className="w-1/3 bg-[#fed7aa] h-screen relative">
-          <img
-            src="/images/image4.png"
-            className="absolute top-5 left-5 h-[200px]"
-            alt=""
-          />
-
-          <Image
-            src="/images/image2.png"
-            width={480}
-            height={480}
-            className="rotate-12 absolute -right-20 top-40"
-            alt="image1"
-          />
-          <h2 className="text-4xl mx-8 italic absolute bottom-40 uppercase">
+      <div className="w-full h-full min-h-screen flex font-unbounded font-bold bg-[#fed7aa]">
+        <div className="w-1/3 h-screen min-h-screen bg-[#fed7aa] flex flex-col justify-between p-4">
+          <img src="/images/image4.png" className=" h-[200px] w-[250px]" alt="" />     
+          <h2 className="text-4xl mx-8 italic uppercase">
             Your favourite site to search or discover new meals
           </h2>
         </div>
+        
+            <Image
+              src="/images/image2.png"
+              width={400}
+              height={400}
+              className="rotate-12 absolute left-80 top-40"
+              alt="image1"
+            />
+        
         <div className="w-2/3 flex flex-col">
           <div className=" bg-orange-400 h-5/6 text-white">
             {/* <Image
@@ -47,7 +44,7 @@ export default function Home() {
               <h1 className="uppercase  text-6xl">22k+</h1>
               <h2>Happy consumer</h2>
             </div>
-            
+
             <div className="w-1/2 flex items-center space-x-8 m-8">
               <img
                 src="/images/profile.jpg"

@@ -15,7 +15,7 @@ function Search({}: Props) {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [category, setCategory] = useState([]);
-  const query = router.query.Search;
+  const query = router.query.search;
   const [q, setQ] = useState("");
 
   const [recipe, setRecipe] = useState([]);
@@ -56,10 +56,12 @@ function Search({}: Props) {
         </Link>
       </div>
 
-      {recipe.length && (
+      {recipe && (
         <div className="font-unbounded flex justify-center items-start   p-10 ">
           <div className="w-3/4 h-full space-y-12 flex-col">
-            <h3 className="text-orange-600 uppercase">{recipe["strCategory"]}</h3>
+            <h3 className="text-orange-600 uppercase">
+              {recipe["strCategory"]}
+            </h3>
             <h1 className="text-5xl first-letter:uppercase font-bold text-[#A33410] truncate">
               {recipe["strMeal"]}
             </h1>
@@ -67,12 +69,12 @@ function Search({}: Props) {
             <h3 className="">{recipe["strArea"]}</h3>
 
             <p className="w-2/3 first-letter:ml-40 p-4 bg-orange-200 rounded-md">
-              {recipe.strInstructions}
+              {recipe["strInstructions"]}
             </p>
             <div className="flex-col justify-center items-center">
               <img
                 className="absolute top-60 right-1/4 rounded-full w-[400px] h-[400px]  shadow-2xl shadow-orange-800"
-                src={recipe.strMealThumb}
+                src={recipe["strMealThumb"]}
                 alt=""
               />
               {/* <h3>
@@ -104,12 +106,12 @@ function Search({}: Props) {
                 Ingredients
               </h1>
               <ul className="flex-col pt-8 items-center space-y-10 ml-14">
-                <li>{recipe.strIngredient1}</li>
-                <li>{recipe.strIngredient2}</li>
-                <li>{recipe.strIngredient3}</li>
-                <li>{recipe.strIngredient4}</li>
-                <li>{recipe.strIngredient5}</li>
-                <li>{recipe.strIngredient6}</li>
+                <li>{recipe["strIngredient1"]}</li>
+                <li>{recipe["strIngredient2"]}</li>
+                <li>{recipe["strIngredient3"]}</li>
+                <li>{recipe["strIngredient4"]}</li>
+                <li>{recipe["strIngredient5"]}</li>
+                <li>{recipe["strIngredient6"]}</li>
               </ul>
             </div>
           </div>

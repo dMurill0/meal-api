@@ -11,8 +11,10 @@ function Navbar({}: Props) {
   const router = useRouter();
   function handleSearch() {
     let input = document.getElementById("input-srch");
-    setSearch(input.value);
-    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${input.value}`)
+    setSearch(input["value"]);
+    fetch(
+      `https://www.themealdb.com/api/json/v1/1/search.php?s=${input["value"]}`
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.length > 0) {

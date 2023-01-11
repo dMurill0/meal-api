@@ -7,7 +7,7 @@ type Props = {};
 
 function FilterByType({}: Props) {
   const [type, setType] = useState([]);
-  
+
   useEffect(() => {
     fetch("https://www.themealdb.com/api/json/v1/1/list.php?c=list")
       .then((res) => res.json())
@@ -16,7 +16,6 @@ function FilterByType({}: Props) {
         console.log(data.meals);
       });
   }, []);
-
 
   return (
     <div className="flex space-x-8 cursor-pointer truncate...">
@@ -29,9 +28,12 @@ function FilterByType({}: Props) {
       >
         {type &&
           type.map((ty) => (
-            <SwiperSlide key={ty.strCategory} className="flex">
-              <button id="btn-type"  className="p-4 text-xs bg-orange-300 rounded-full [&.active]bg-orange-400 active:bg-orange-500 truncate">
-                {ty.strCategory}
+            <SwiperSlide key={ty["strCategory"]} className="flex">
+              <button
+                id="btn-type"
+                className="p-4 text-xs bg-orange-300 rounded-full [&.active]bg-orange-400 active:bg-orange-500 truncate"
+              >
+                {ty["strCategory"]}
               </button>
             </SwiperSlide>
           ))}

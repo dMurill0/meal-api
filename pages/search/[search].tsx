@@ -56,15 +56,15 @@ function Search({}: Props) {
         </Link>
       </div>
 
-      {recipe && (
+      {recipe.length && (
         <div className="font-unbounded flex justify-center items-start   p-10 ">
           <div className="w-3/4 h-full space-y-12 flex-col">
-            <h3 className="text-orange-600 uppercase">{recipe.strCategory}</h3>
+            <h3 className="text-orange-600 uppercase">{recipe["strCategory"]}</h3>
             <h1 className="text-5xl first-letter:uppercase font-bold text-[#A33410] truncate">
-              {recipe.strMeal}
+              {recipe["strMeal"]}
             </h1>
 
-            <h3 className="">{recipe.strArea}</h3>
+            <h3 className="">{recipe["strArea"]}</h3>
 
             <p className="w-2/3 first-letter:ml-40 p-4 bg-orange-200 rounded-md">
               {recipe.strInstructions}

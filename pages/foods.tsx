@@ -37,7 +37,7 @@ function Foods({}: Props) {
       });
   }, []);
 
-  function handleContent(e) {
+  function handleContent(e: any) {
     const { target } = e;
     let btn = document.getElementById("btn-zone");
     setContent(target.innerText);
@@ -45,7 +45,7 @@ function Foods({}: Props) {
     alert(target.innerText);
   }
 
-  function handleType(e) {
+  function handleType(e: any) {
     const { target } = e;
     let btn = document.getElementById("btn-type");
     setTipo(target.innerText);
@@ -108,7 +108,6 @@ function Foods({}: Props) {
         <Swiper
           modules={[Thumbs]}
           watchSlidesProgress
-          onSwiper={setThumbsSwiper}
           spaceBetween={40}
           slidesPerView={3}
           onSlideChange={() => console.log("slide change")}
@@ -117,17 +116,17 @@ function Foods({}: Props) {
           {recipe &&
             recipe.map((rec) => (
               <SwiperSlide
-                key={rec.idMeal}
+                key={rec["idMeal"]}
                 className="flex flex-col bg-orange-500 p-8 my-4 space-y-2"
               >
-                <Link href={`search/${rec.idMeal}`}>
+                <Link href={`search/${rec["idMeal"]}`}>
                   <img
                     className="w-full h-[300px] mx-auto rounded-2xl cursor-pointer"
-                    src={rec.strMealThumb}
+                    src={rec["strMealThumb"]}
                     alt=""
                   />
                   <h1 className="mx-auto texxt-xl font-bold uppercase truncate...">
-                    {rec.strMeal}
+                    {rec["strMeal"]}
                   </h1>
                 </Link>
               </SwiperSlide>

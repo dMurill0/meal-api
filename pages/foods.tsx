@@ -24,7 +24,7 @@ function Foods({}: Props) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [content, setContent] = useState("");
   const [tipo, setTipo] = useState("");
-
+  const [main, setMain] = useState("");
   const router = useRouter();
   const currentZone = useRef();
 
@@ -37,19 +37,38 @@ function Foods({}: Props) {
       });
   }, []);
 
+  useEffect(() => {
+    if (content !== null) {
+      fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${content}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setRecipe(data.meals);
+          console.log(data.meals);
+        });
+    }
+    if (tipo !== null) {
+      fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${tipo}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setRecipe(data.meals);
+          console.log(data.meals);
+        });
+    }
+  }, [content, tipo]);
+
   function handleContent(e: any) {
     const { target } = e;
     let btn = document.getElementById("btn-zone");
     setContent(target.innerText);
     currentZone.current = target;
-    alert(target.innerText);
+    setMain(target.innerText);
   }
 
   function handleType(e: any) {
     const { target } = e;
     let btn = document.getElementById("btn-type");
     setTipo(target.innerText);
-    alert(target.innerText);
+    setMain(target.innerText);
   }
   function handleRandom() {
     fetch("https://www.themealdb.com/api/json/v1/1/random.php")
@@ -69,7 +88,7 @@ function Foods({}: Props) {
   }
 
   return (
-    <div className="h-full w-screen bg-orange-400 flex-col justify-center pt-12 space-y-6 font-unbounded pl-8">
+    <div className="h-full min-h-screen min-w-screen w-full bg-orange-400 flex-col justify-center pt-12 space-y-6 font-unbounded pl-8 pb-8">
       <Link href={"/"}>
         <img
           src="/images/image4.png"
@@ -78,6 +97,7 @@ function Foods({}: Props) {
         />
       </Link>
       <h1 className="text-6xl pl-20 uppercase">Popular foods</h1>
+
       <div className="flex justify-center items-center mt-8  space-x-6">
         <input
           className="bg-orange-300 text-slate-500 w-1/3 rounded-lg shadow-sm focus:ring-1 focus:ring-orange-500  border-b-4 focus:border-orange-500 focus:outline-dotted hover:border-orange-300 border-orange-100 "
@@ -89,11 +109,11 @@ function Foods({}: Props) {
           <GoSearch size={30} />
         </button>
       </div>
-      <FilterByZone />
-      <FilterByType />
+      <FilterByZone content={content} handleContent={handleContent} />
+      <FilterByType tipo={tipo} handleType={handleType} />
       <div className="flex space-x-8 items-center">
         <h3>Random Meal </h3>
-        <h2>{title}</h2>
+        
 
         <GiPerspectiveDiceSixFacesRandom
           size={80}
@@ -101,9 +121,8 @@ function Foods({}: Props) {
           onClick={handleRandom}
         />
       </div>
-      <h1>
-        {content} {tipo}
-      </h1>
+      <h2 className="ml-[50%] text-2xl font-bold w-screen ">{main}</h2>
+      
       <div className="w-7/8 flex mx-6 justify-center truncate space-x-4 ">
         <Swiper
           modules={[Thumbs]}

@@ -5,7 +5,7 @@ import { Thumbs } from "swiper";
 import "swiper/css";
 type Props = {};
 
-function FilterByType({}: Props) {
+function FilterByType({tipo,handleType}: Props) {
   const [type, setType] = useState([]);
 
   useEffect(() => {
@@ -29,12 +29,13 @@ function FilterByType({}: Props) {
         {type &&
           type.map((ty) => (
             <SwiperSlide key={ty["strCategory"]} className="flex">
-              <button
+              <h3
                 id="btn-type"
-                className="p-4 text-xs bg-orange-300 rounded-full [&.active]bg-orange-400 active:bg-orange-500 truncate"
+                onClick={handleType}
+                className="p-4 text-xs bg-orange-300 rounded-full focus:bg-orange-400 [&.active]bg-orange-400 active:bg-orange-500 truncate"
               >
                 {ty["strCategory"]}
-              </button>
+              </h3>
             </SwiperSlide>
           ))}
       </Swiper>

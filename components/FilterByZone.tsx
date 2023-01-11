@@ -4,11 +4,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Thumbs } from "swiper";
 import "swiper/css";
 import Link from "next/link";
-type Props = { };
+type Props = {};
 
-function FilterByZone({}: Props) {
+function FilterByZone({content,handleContent}: Props) {
   const [zone, setZone] = useState([]);
-
+  // const [content, setContent] = useState("");
+  const currentZone = useRef();
   useEffect(() => {
     fetch("https://www.themealdb.com/api/json/v1/1/list.php?a=list")
       .then((res) => res.json())
@@ -18,9 +19,18 @@ function FilterByZone({}: Props) {
       });
   }, []);
 
+  // function handleContent(e: any) {
+  //   const { target } = e;
+  //   let btn = document.getElementById("btn-zone");
+  //   currentZone.current = target;
+  //   setContent(target.innerText);
+    
+  // }
+
   return (
     <div className="flex space-x-2 cursor-pointer truncate">
       <h3>By zone</h3>
+      <h2>{content}</h2>
       <Swiper
         spaceBetween={0}
         slidesPerView={14}
@@ -32,7 +42,7 @@ function FilterByZone({}: Props) {
             <SwiperSlide key={zo["strArea"]} className="flex">
               <h3
                 id="btn-zone"
-                // onClick={handleContent}
+                onClick={handleContent}
                 className="[&.active]:text-orange-400 active:text-orange-400 p-4 text-xs bg-orange-300 rounded-full [&.active]bg-orange-400 active:bg-orange-500 truncate mx-auto"
               >
                 {zo["strArea"]}

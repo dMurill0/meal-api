@@ -6,7 +6,7 @@ type Props = {};
 
 function about({}: Props) {
   return (
-    <div className="h-screen w-screen bg-[#fcd9bd] flex font-unbounded">
+    <div className="h-full w-screen bg-[#fcd9bd] flex font-unbounded">
       <Link href={"/"}>
         <img
           className="absolute w-[250px] right-10 top-10"

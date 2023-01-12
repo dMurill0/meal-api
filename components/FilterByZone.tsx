@@ -4,7 +4,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Thumbs } from "swiper";
 import "swiper/css";
 import Link from "next/link";
-type Props = {};
+type Props = {
+  content: string;
+  handleContent
+};
 
 function FilterByZone({content,handleContent}: Props) {
   const [zone, setZone] = useState([]);

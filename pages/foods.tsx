@@ -113,8 +113,6 @@ function Foods({}: Props) {
       <FilterByType tipo={tipo} handleType={handleType} />
       <div className="flex space-x-8 items-center">
         <h3>Random Meal </h3>
-        
-
         <GiPerspectiveDiceSixFacesRandom
           size={80}
           className="w-[40px] cursor-pointer"
@@ -122,7 +120,7 @@ function Foods({}: Props) {
         />
       </div>
       <h2 className="ml-[50%] text-2xl font-bold w-screen ">{main}</h2>
-      
+
       <div className="w-7/8 flex mx-6 justify-center truncate space-x-4 ">
         <Swiper
           modules={[Thumbs]}

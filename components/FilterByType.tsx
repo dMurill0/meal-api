@@ -3,7 +3,10 @@ import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Thumbs } from "swiper";
 import "swiper/css";
-type Props = {};
+type Props = {
+  tipo: string,
+  handleType
+};
 
 function FilterByType({tipo,handleType}: Props) {
   const [type, setType] = useState([]);

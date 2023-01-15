@@ -36,7 +36,7 @@ function Content({}: Props) {
         <h1 className=" text-5xl first-letter:uppercase truncate">{title}</h1>
         <h3 className="italic text-slate-400">{category}</h3>
         <img
-          className="w-[500px] h-[300px] rounded-t-2xl hover:scale-110 shadow-2xl shadow-orange-800"
+          className="w-[300px] h-[200px] rounded-t-2xl hover:scale-105 shadow-2xl shadow-orange-800"
           src={image}
           alt=""
         />

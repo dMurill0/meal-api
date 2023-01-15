@@ -29,9 +29,9 @@ function Navbar({}: Props) {
 
   return (
     <nav>
-      <ul className="list-none flex mx-6 py-2 shadow-b-lg space-x-4 md:space-x-12 lg:space-x-28 justify-center text-xl mr-28 mt-8 items-center uppercase">
+      <ul className="list-none flex mx-2 py-2 shadow-b-lg space-x-2 md:space-x-4 lg:space-x-8 justify-center text-sm md:text-md lg:text-xl mr-28 mt-8 items-center uppercase">
         <Link
-          className="mx-2 hover:shadow-2xl hover:shadow-orange-200 -mb-px mr-1 inline-block border-l border-t border-r  rounded-t py-2 px-4 "
+         className=" mx-2 hover:shadow-2xl hover:shadow-orange-200 -mb-px mr-1 inline-block border-l border-t border-r  rounded-t py-2 px-4 "
           href={""}
         >
           Menu

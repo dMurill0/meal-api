@@ -64,7 +64,7 @@ function Search({}: Props) {
         <Link href={"/"}>
           <img
             src="/images/image4.png"
-            className="absolute top-5 right-20 h-[100px]"
+            className="absolute top-5 right-20 h-[100px] rounded-full "
             alt=""
           />
         </Link>

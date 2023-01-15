@@ -13,21 +13,21 @@ export default function Home() {
     <>
       <div className="w-full h-full min-h-screen flex font-unbounded font-bold bg-[#fed7aa]">
         <div className="w-1/3 h-screen min-h-screen bg-[#fed7aa] flex flex-col justify-between p-4">
-          <img src="/images/image4.png" className=" h-[200px] w-[250px]" alt="" />     
-          <h2 className="text-4xl mx-8 italic uppercase">
+          <img src="/images/image4.png" className=" h-[100px] w-[150px]" alt="" />     
+          <h2 className="text-2xl mx-8 italic uppercase">
             Your favourite site to search or discover new meals
           </h2>
         </div>
         
             <Image
               src="/images/image2.png"
-              width={400}
-              height={400}
-              className="rotate-12 absolute left-80 top-40"
+              width={300}
+              height={300}
+              className="rotate-12 absolute left-60 top-40"
               alt="image1"
             />
         
-        <div className="w-2/3 flex flex-col">
+        <div className="min-w-2/3 w-full flex flex-col">
           <div className=" bg-orange-400 h-5/6 text-white">
             {/* <Image
               src="/images/image3.png"

@@ -3,12 +3,13 @@ import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Thumbs } from "swiper";
 import "swiper/css";
+import {BsFillCaretDownFill} from "react-icons/bs";
 type Props = {
-  tipo: string,
-  handleType
+  tipo: string;
+  handleType;
 };
 
-function FilterByType({tipo,handleType}: Props) {
+function FilterByType({ tipo, handleType }: Props) {
   const [type, setType] = useState([]);
 
   useEffect(() => {
@@ -20,28 +21,35 @@ function FilterByType({tipo,handleType}: Props) {
       });
   }, []);
 
+  function handleDropType(){
+    let dropT = document.getElementById("drop-type");
+    if (dropT.style.display === "none")
+    dropT.style.display = "block";
+    else dropT.style.display = "none";
+  }
+
   return (
-    <div className="flex space-x-8 cursor-pointer truncate...">
-      <h3>By type</h3>
-      <Swiper
-        spaceBetween={5}
-        slidesPerView={14}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
-      >
-        {type &&
-          type.map((ty) => (
-            <SwiperSlide key={ty["strCategory"]} className="flex">
+    <div className="flex space-x-2  cursor-pointer truncate...">
+      <div>
+        <div className="flex items-center space-x-4">
+        <button className="flex items-center" onClick={handleDropType}>By type <BsFillCaretDownFill className="animate-bounce"/></button>
+        </div>
+        
+        <div className="overflow-y-scroll space-y-2 bg-orange-300 h-[300px] rounded-lg hidden" id="drop-type">
+          {type &&
+            type.map((ty) => (
               <h3
+                key={ty["strCategory"]}
                 id="btn-type"
                 onClick={handleType}
-                className="p-4 text-xs bg-orange-300 rounded-full focus:bg-orange-400 [&.active]bg-orange-400 active:bg-orange-500 truncate"
+                className="p-2 text-xs bg-orange-300  focus:bg-orange-400 [&.active]bg-orange-400 active:bg-orange-500 truncate... "
               >
                 {ty["strCategory"]}
               </h3>
-            </SwiperSlide>
-          ))}
-      </Swiper>
+            ))}
+        </div>
+      </div>
+   
     </div>
   );
 }

@@ -3,13 +3,13 @@ import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Thumbs } from "swiper";
 import "swiper/css";
-import Link from "next/link";
+import {BsFillCaretDownFill} from "react-icons/bs";
 type Props = {
   content: string;
-  handleContent
+  handleContent;
 };
 
-function FilterByZone({content,handleContent}: Props) {
+function FilterByZone({ content, handleContent }: Props) {
   const [zone, setZone] = useState([]);
   // const [content, setContent] = useState("");
   const currentZone = useRef();
@@ -22,37 +22,42 @@ function FilterByZone({content,handleContent}: Props) {
       });
   }, []);
 
+function handleDropZone(){
+  let drop = document.getElementById("drop-zone");
+  if (drop.style.display === "none")
+  drop.style.display = "block";
+  else drop.style.display = "none";
+}
+
+
   // function handleContent(e: any) {
   //   const { target } = e;
   //   let btn = document.getElementById("btn-zone");
   //   currentZone.current = target;
   //   setContent(target.innerText);
-    
+
   // }
 
   return (
     <div className="flex space-x-2 cursor-pointer truncate">
-      <h3>By zone</h3>
-      <h2>{content}</h2>
-      <Swiper
-        spaceBetween={0}
-        slidesPerView={14}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
-      >
-        {zone &&
-          zone.map((zo) => (
-            <SwiperSlide key={zo["strArea"]} className="flex">
+      <div>
+      <div className="flex items-center space-x-4">
+        <button className="flex items-center" onClick={handleDropZone}>By zone <BsFillCaretDownFill className="animate-bounce"/></button>
+        </div>
+        <div className="overflow-y-scroll space-y-2 bg-orange-300 h-[300px] rounded-lg hidden" id="drop-zone">
+          {zone &&
+            zone.map((zo) => (
               <h3
-                id="btn-zone"
+                key={zo["strArea"]}
+                id="btn-type"
                 onClick={handleContent}
-                className="[&.active]:text-orange-400 active:text-orange-400 p-4 text-xs bg-orange-300 rounded-full [&.active]bg-orange-400 active:bg-orange-500 truncate mx-auto"
+                className="p-2 text-xs bg-orange-300  focus:bg-orange-400 [&.active]bg-orange-400 active:bg-orange-500 truncate... "
               >
                 {zo["strArea"]}
               </h3>
-            </SwiperSlide>
-          ))}
-      </Swiper>
+            ))}
+        </div>
+      </div>
     </div>
   );
 }

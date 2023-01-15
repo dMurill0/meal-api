@@ -46,15 +46,18 @@ function Foods({}: Props) {
           console.log(data.meals);
         });
     }
+  }, [content]);
+
+  useEffect(() => {
     if (tipo !== null) {
-      fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${tipo}`)
+      fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${tipo}`)
         .then((res) => res.json())
         .then((data) => {
           setRecipe(data.meals);
           console.log(data.meals);
         });
     }
-  }, [content, tipo]);
+  }, [tipo]);
 
   function handleContent(e: any) {
     const { target } = e;
@@ -68,6 +71,7 @@ function Foods({}: Props) {
     const { target } = e;
     let btn = document.getElementById("btn-type");
     setTipo(target.innerText);
+    currentZone.current = target;
     setMain(target.innerText);
   }
   function handleRandom() {
@@ -109,8 +113,43 @@ function Foods({}: Props) {
           <GoSearch size={30} />
         </button>
       </div>
-      <FilterByZone content={content} handleContent={handleContent} />
-      <FilterByType tipo={tipo} handleType={handleType} />
+      <h2 className="ml-[50%] text-2xl font-bold w-screen ">{main}</h2>
+      <div className="flex space-x-4">
+        <FilterByZone content={content} handleContent={handleContent} />
+        <FilterByType tipo={tipo} handleType={handleType} />
+        <div className="w-4/5 h-1/5 flex mx-auto justify-center truncate">
+          {recipe && (
+            <Swiper
+              modules={[Thumbs]}
+              watchSlidesProgress
+              spaceBetween={3}
+              slidesPerView={3}
+              onSlideChange={() => console.log("slide change")}
+              // onSwiper={(swiper) => console.log(swiper)}
+            >
+              {recipe &&
+                recipe.map((rec) => (
+                  <SwiperSlide
+                    key={rec["idMeal"]}
+                    className="flex flex-col p-4"
+                  >
+                    <Link href={`search/${rec["idMeal"]}`}>
+                      <img
+                        className="p-2 w-full h-1/2 mx-auto rounded-2xl cursor-pointer"
+                        src={rec["strMealThumb"]}
+                        alt=""
+                      />
+                      <h1 className="flex justify-center text-sm font-bold uppercase truncate">
+                        {rec["strMeal"]}
+                      </h1>
+                    </Link>
+                  </SwiperSlide>
+                ))}
+            </Swiper>
+          )}
+        </div>
+      </div>
+
       <div className="flex space-x-8 items-center">
         <h3>Random Meal </h3>
         <GiPerspectiveDiceSixFacesRandom
@@ -118,37 +157,6 @@ function Foods({}: Props) {
           className="w-[40px] cursor-pointer"
           onClick={handleRandom}
         />
-      </div>
-      <h2 className="ml-[50%] text-2xl font-bold w-screen ">{main}</h2>
-
-      <div className="w-7/8 flex mx-6 justify-center truncate space-x-4 ">
-        <Swiper
-          modules={[Thumbs]}
-          watchSlidesProgress
-          spaceBetween={40}
-          slidesPerView={3}
-          onSlideChange={() => console.log("slide change")}
-          // onSwiper={(swiper) => console.log(swiper)}
-        >
-          {recipe &&
-            recipe.map((rec) => (
-              <SwiperSlide
-                key={rec["idMeal"]}
-                className="flex flex-col bg-orange-500 p-8 my-4 space-y-2"
-              >
-                <Link href={`search/${rec["idMeal"]}`}>
-                  <img
-                    className="w-full h-[300px] mx-auto rounded-2xl cursor-pointer"
-                    src={rec["strMealThumb"]}
-                    alt=""
-                  />
-                  <h1 className="mx-auto texxt-xl font-bold uppercase truncate...">
-                    {rec["strMeal"]}
-                  </h1>
-                </Link>
-              </SwiperSlide>
-            ))}
-        </Swiper>
       </div>
     </div>
   );

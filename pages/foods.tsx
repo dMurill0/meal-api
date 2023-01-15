@@ -147,6 +147,7 @@ function Foods({}: Props) {
                 ))}
             </Swiper>
           )}
+          {!recipe && <h2 className="text-2xl font-bold">Recipes don't found!!</h2>}
         </div>
       </div>
 

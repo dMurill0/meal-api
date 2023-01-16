@@ -32,7 +32,7 @@ function FilterByType({ tipo, handleType }: Props) {
     <div className="flex space-x-2  cursor-pointer truncate...">
       <div>
         <div className="flex items-center space-x-4">
-        <button className="flex items-center" onClick={handleDropType}>By type <BsFillCaretDownFill className="animate-bounce"/></button>
+        <button className="flex items-center " onClick={handleDropType}>By type <BsFillCaretDownFill className="animate-bounce"/></button>
         </div>
         
         <div className="overflow-y-scroll space-y-2 bg-orange-300 h-[300px] rounded-lg hidden" id="drop-type">

@@ -118,7 +118,7 @@ function Foods({}: Props) {
         <FilterByZone content={content} handleContent={handleContent} />
         <FilterByType tipo={tipo} handleType={handleType} />
         <div className="w-4/5 h-1/5 flex mx-auto justify-center truncate">
-          {recipe && (
+          {recipe && recipe.length > 2 ? (
             <Swiper
               modules={[Thumbs]}
               watchSlidesProgress
@@ -146,8 +146,26 @@ function Foods({}: Props) {
                   </SwiperSlide>
                 ))}
             </Swiper>
+          ) : (
+            <h2 className="text-2xl font-bold"></h2>
           )}
-          {!recipe && <h2 className="text-2xl font-bold">Recipes don't found!!</h2>}
+
+          {recipe && recipe.length < 3 ? (
+            recipe.map((rec) => (
+              <Link href={`search/${rec["idMeal"]}`} key={rec["idMeal"]}>
+                <img
+                  className="p-2 w-full h-1/2 mx-auto rounded-2xl cursor-pointer"
+                  src={rec["strMealThumb"]}
+                  alt=""
+                />
+                <h1 className="flex justify-center text-sm font-bold uppercase truncate">
+                  {rec["strMeal"]}
+                </h1>
+              </Link>
+            ))
+          ) : (
+            <h2 className="text-2xl font-bold"></h2>
+          )}
         </div>
       </div>
 

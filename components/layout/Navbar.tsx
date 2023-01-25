@@ -32,9 +32,9 @@ function Navbar({}: Props) {
       <ul className="list-none flex mx-2 py-2 shadow-b-lg space-x-2 md:space-x-4 lg:space-x-8 justify-center text-sm md:text-md lg:text-xl mr-28 mt-8 items-center uppercase">
         <Link
          className=" mx-2 hover:shadow-2xl hover:shadow-orange-200 -mb-px mr-1 inline-block border-l border-t border-r  rounded-t py-2 px-4 "
-          href={""}
+          href={"/menu"}
         >
-          Menu
+        Menu
         </Link>
         <Link
           className="mx-2 hover:bg-orange-600 -mb-px mr-1 inline-block border-l border-t border-r  rounded-t py-2 px-4 "
@@ -42,12 +42,12 @@ function Navbar({}: Props) {
         >
           Foods
         </Link>
-        <Link
+        {/* <Link
           className="mx-2 hover:bg-orange-600 -mb-px mr-1 inline-block border-l border-t border-r  rounded-t py-2 px-4 "
           href={""}
         >
-          Services
-        </Link>
+          
+        </Link> */}
         <Link
           className="mx-2 hover:bg-orange-600 -mb-px mr-1 inline-block border-l border-t border-r  rounded-t py-2 px-4 "
           href={"/about"}

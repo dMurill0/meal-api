@@ -32,7 +32,7 @@ function Search({}: Props) {
     fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${query}`)
       .then((res) => res.json())
       .then((data) => {
-        setRecipe(data.meals[0]);
+        if (data.meals.lenght > 0) setRecipe(data.meals[0]);
         let name = data.meals[0].strMeal;
         setTitle(name);
         let thumb = data.meals[0].strMealThumb;
@@ -42,7 +42,7 @@ function Search({}: Props) {
         console.log(data.meals[0]);
         const randomElement = Math.floor(Math.random() * dificultad.length);
         const randomCalories = Math.floor(Math.random() * calorias.length);
-        const randomDuration = Math.floor(Math.random() * duracion.length );
+        const randomDuration = Math.floor(Math.random() * duracion.length);
         console.log(randomElement, dificultad[randomElement]);
         setChallengue(dificultad[randomElement]);
         setCalories(calorias[randomCalories]);

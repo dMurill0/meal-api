@@ -15,6 +15,7 @@ type Props = {};
 
 function Foods({}: Props) {
   const [recipe, setRecipe] = useState([]);
+  const [recipeRandom, setRecipeRandom] = useState([]);
   const [receta, setReceta] = useState([]);
   const [type, setType] = useState("");
   const [zone, setZone] = useState("");
@@ -29,11 +30,26 @@ function Foods({}: Props) {
   const currentZone = useRef();
 
   useEffect(() => {
-    fetch("https://www.themealdb.com/api/json/v1/1/filter.php?c=Pork")
+    fetch("https://www.themealdb.com/api/json/v1/1/random.php")
       .then((res) => res.json())
       .then((data) => {
-        setRecipe(data.meals);
-        console.log(data.meals);
+        setRecipeRandom(data.meals[0]);
+        return(
+          <div>
+            {recipeRandom && (
+              <Link key={recipeRandom["idMeal"]} href={`search/${recipeRandom["idMeal"]}`}>
+              <img
+                className="p-2 w-full h-1/2 mx-auto rounded-2xl cursor-pointer"
+                src={recipeRandom["strMealThumb"]}
+                alt=""
+              />
+              <h1 className="flex justify-center text-sm font-bold uppercase truncate">
+                {recipeRandom["strMeal"]}
+              </h1>
+            </Link>
+            )}
+          </div>
+        )
       });
   }, []);
 
@@ -102,7 +118,7 @@ function Foods({}: Props) {
       </Link>
       <h1 className="text-6xl pl-20 uppercase">Popular foods</h1>
 
-      <div className="flex justify-center items-center mt-8  space-x-6">
+      {/* <div className="flex justify-center items-center mt-8  space-x-6">
         <input
           className="bg-orange-300 text-slate-500 w-1/3 rounded-lg shadow-sm focus:ring-1 focus:ring-orange-500  border-b-4 focus:border-orange-500 focus:outline-dotted hover:border-orange-300 border-orange-100 "
           type="search"
@@ -112,7 +128,7 @@ function Foods({}: Props) {
         <button id="search-btn">
           <GoSearch size={30} />
         </button>
-      </div>
+      </div> */}
       <h2 className="ml-[50%] text-2xl font-bold w-screen ">{main}</h2>
       <div className="flex space-x-4">
         <FilterByZone content={content} handleContent={handleContent} />

@@ -3,69 +3,79 @@ import React from "react";
 import { GoSearch } from "react-icons/go";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { AiOutlineDown } from "react-icons/ai";
 
 type Props = {};
 
 function Navbar({}: Props) {
-  const [search, setSearch] = useState("");
-  const router = useRouter();
-  function handleSearch() {
-    let input = document.getElementById("input-srch");
-    setSearch(input["value"]);
-    fetch(
-      `https://www.themealdb.com/api/json/v1/1/search.php?s=${input["value"]}`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.length > 0) {
-          console.log(data.meals[0]);
-          let id = data.meals[0].idMeal;
-          router.push(`search/${id}`);
-        } else {
-          alert("no hay recetas");
-        }
-      });
+  function handleDropDiets() {
+    let btn = document.getElementById("drop-diets");
+    btn.style.display = "block";
+  }
+  function handleDropDietsDown() {
+    let btn = document.getElementById("drop-diets");
+    btn.style.display = "none";
   }
 
   return (
-    <nav>
-      <ul className="list-none flex mx-2 py-2 shadow-b-lg space-x-2 md:space-x-4 lg:space-x-8 justify-center text-sm md:text-md lg:text-xl mr-28 mt-8 items-center uppercase">
+    <nav className="border-1 border-t shadow-slate-400 ">
+      <ul className="p-2 list-none flex justify-start shadow-b-lg space-x-2 md:space-x-4 lg:space-x-8  text-sm md:text-md lg:text-xl  items-center uppercase">
         <Link
-         className=" mx-2 hover:shadow-2xl hover:shadow-orange-200 -mb-px mr-1 inline-block border-l border-t border-r  rounded-t py-2 px-4 "
+          className=" hover:shadow-2xl hover:shadow-orange-200 -mb-px mr-1 inline-block  rounded-t  text-sm hover:text-green-500"
           href={"/menu"}
         >
-        Menu
+          Menu
         </Link>
         <Link
-          className="mx-2 hover:bg-orange-600 -mb-px mr-1 inline-block border-l border-t border-r  rounded-t py-2 px-4 "
+          className=" hover:shadow-2xl hover:shadow-orange-200 -mb-px mr-1 inline-block  rounded-t  text-sm hover:text-green-500"
           href={"/foods"}
         >
           Foods
         </Link>
-        {/* <Link
-          className="mx-2 hover:bg-orange-600 -mb-px mr-1 inline-block border-l border-t border-r  rounded-t py-2 px-4 "
+        <Link
+          className="flex items-center hover:shadow-2xl hover:shadow-orange-200 -mb-px mr-1   rounded-t  text-sm hover:text-green-500"
+          href={""}
+          onMouseEnter={handleDropDiets}
+          
+        >
+          Diets <AiOutlineDown />
+          <div className="hidden flex-col absolute bg-white top-20 px-2 py-4 rounded-lg space-y-4" id="drop-diets" onMouseEnter={handleDropDiets} onMouseLeave={handleDropDietsDown}>
+            <h1 className="pointer text-gray-500 border-b-2 text-xs hover:text-green-400">Keto</h1>
+            <h1 className="pointer text-gray-500 border-b-2 text-xs hover:text-green-400">Paleo</h1>
+            <h1 className="pointer text-gray-500 border-b-2 text-xs hover:text-green-400">Low Carb</h1>
+            <h1 className="pointer text-gray-500 border-b-2 text-xs hover:text-green-400">Pescetarian</h1>
+            <h1 className="pointer text-gray-500 border-b-2 text-xs hover:text-green-400">Vegetarian</h1>
+            <h1 className="pointer text-gray-500 border-b-2 text-xs hover:text-green-400">Vegan</h1>
+            <h1 className="pointer text-gray-500 border-b-2 text-xs hover:text-green-400">Gluten Free</h1>
+            <h1 className="pointer text-gray-500 border-b-2 text-xs hover:text-green-400">Mediterranean</h1>
+            <h1 className="pointer text-gray-500 border-b-2 text-xs hover:text-green-400">Dairy Free</h1>
+          </div>
+        </Link>
+        <Link
+          className=" hover:shadow-2xl hover:shadow-orange-200 -mb-px mr-1 inline-block  rounded-t  text-sm hover:text-green-500"
           href={""}
         >
-          
-        </Link> */}
+          Starter
+        </Link>
         <Link
-          className="mx-2 hover:bg-orange-600 -mb-px mr-1 inline-block border-l border-t border-r  rounded-t py-2 px-4 "
+          className=" hover:shadow-2xl hover:shadow-orange-200 -mb-px mr-1 inline-block  rounded-t  text-sm hover:text-green-500"
+          href={""}
+        >
+          Main
+        </Link>
+        <Link
+          className=" hover:shadow-2xl hover:shadow-orange-200 -mb-px mr-1 inline-block  rounded-t  text-sm hover:text-green-500"
+          href={""}
+        >
+          Dessert
+        </Link>
+        <Link
+          className=" hover:shadow-2xl hover:shadow-orange-200 -mb-px mr-1 inline-block  rounded-t  text-sm hover:text-green-500"
           href={"/about"}
         >
           About Us
         </Link>
       </ul>
-      <div className="flex justify-center items-center mt-8  space-x-6">
-        <input
-          className="bg-orange-300 text-slate-500 w-1/3 rounded-lg shadow-sm focus:ring-1 focus:ring-orange-500  border-b-4 focus:border-orange-500 focus:outline-dotted hover:border-orange-300 border-orange-100 "
-          type="search"
-          placeholder="Search a meal"
-          id="input-srch"
-        />
-        <button id="search-btn" onClick={handleSearch}>
-          <GoSearch size={30} />
-        </button>
-      </div>
     </nav>
   );
 }

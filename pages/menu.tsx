@@ -1,23 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import React from "react";
+import Icon from "../components/layout/Icon";
 
 type Props = {};
 
 function menu({}: Props) {
   return (
-    <div className="h-full min-h-screen min-w-screen w-full bg-orange-400 flex-col justify-center pt-12 space-y-6 font-unbounded pl-8 pb-8">
-      <div className="border-b-2 pb-12 mx-8 border-orange-600">
+    <div className="h-full min-h-screen min-w-screen w-full bg-white-400 flex-col justify-center pt-2 space-y-6 font-unbounded pl-8 pb-8">
+      <div className="border-b-2 pb-4 mx-8 border-white-600 flex">
         <Link href={"/"}>
-          <img
-            src="/images/image4.png"
-            alt=""
-            className="absolute w-[150px] right-20 top-4"
-          />
+         <Icon/>
         </Link>
-        <h1 className="text-6xl pl-20 uppercase">Menu</h1>
+        <h1 className="text-xl pl-20 uppercase">Menu</h1>
       </div>
-      <div className="flex-col space-y-20 py-20 border-b-2 border-orange-600 ml-12">
+      <div className="flex-col space-y-20 py-20 border-b-2 border-white-600 ml-12">
         <div className="flex">
           <h2>Starter:</h2>
         </div>
@@ -30,7 +27,7 @@ function menu({}: Props) {
       </div>
       {/* <div className="flex justify-center items-center mt-8  space-x-6">
       <input
-        className="bg-orange-300 text-slate-500 w-1/3 rounded-lg shadow-sm focus:ring-1 focus:ring-orange-500  border-b-4 focus:border-orange-500 focus:outline-dotted hover:border-orange-300 border-orange-100 "
+        className="bg-white-300 text-slate-500 w-1/3 rounded-lg shadow-sm focus:ring-1 focus:ring-white-500  border-b-4 focus:border-white-500 focus:outline-dotted hover:border-white-300 border-white-100 "
         type="search"
         placeholder="Search a meal"
         id="input-srch"
